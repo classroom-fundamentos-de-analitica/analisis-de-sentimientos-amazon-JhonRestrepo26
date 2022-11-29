@@ -126,8 +126,8 @@ def pregunta_04():
     # Cree un pipeline que contenga el CountVectorizer y el modelo de BernoulliNB.
     pipeline = Pipeline(
         steps=[
-            ("C_V", CountVectorizer),
-            ("B_NB", BernoulliNB()),
+            ("CountVectorizer", CountVectorizer),
+            ("BernoulliNB", BernoulliNB()),
         ],
     )
 
@@ -135,7 +135,7 @@ def pregunta_04():
     # considerar 10 valores entre 0.1 y 1.0 para el parámetro alpha de
     # BernoulliNB.
     param_grid = {
-        "b__alpha": np.linspace(0.1, 1, 10), #Del 0.1 al 1.0 (10 veces), variando 0.1
+        "bernoulliNB__alpha": np.linspace(0.1, 1, 10), #Del 0.1 al 1.0 (10 veces), variando 0.1
     }
 
     # Defina una instancia de GridSearchCV con el pipeline y el diccionario de
@@ -174,12 +174,12 @@ def pregunta_05():
     # Evalúe el pipeline con los datos de entrenamiento usando la matriz de confusion.
     cfm_train = confusion_matrix(
         y_true=y_train,
-        y_pred=gridSearchCV.predict(x_train),
+        y_pred=gridSearchCV.predict(X_train),
     )
 
     cfm_test = confusion_matrix(
         y_true=y_test,
-        y_pred=gridSearchCV.predict(x_test),
+        y_pred=gridSearchCV.predict(X_test),
     )
 
     # Retorne la matriz de confusion de entrenamiento y prueba
@@ -200,7 +200,7 @@ def pregunta_06():
 
     # pronostique la polaridad del sentimiento para los datos
     # no etiquetados
-    y_untagged_pred = ____.____(____)
+    y_untagged_pred = gridSearchCV.predict(X_untagged)
 
     # Retorne el vector de predicciones
     return y_untagged_pred
