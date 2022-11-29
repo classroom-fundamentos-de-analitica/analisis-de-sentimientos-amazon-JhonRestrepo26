@@ -116,7 +116,7 @@ def pregunta_04():
     countVectorizer = CountVectorizer(
         analyzer=analyzer,
         lowercase=True,
-        stop_words='english',
+        stop_words="english",
         token_pattern=r"\b\w\w+\b",
         binary=True,
         max_df=1.0,
@@ -144,9 +144,9 @@ def pregunta_04():
         estimator=pipeline,
         param_grid=param_grid,
         cv=5,
-        scoring='accuracy',
+        scoring="accuracy",
         refit=True,
-        return_train_score=True,
+        return_train_score=False,
     )
 
     # Búsque la mejor combinación de regresores
