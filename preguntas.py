@@ -22,7 +22,7 @@ def pregunta_01():
     # Etiquete la primera columna como `msg` y la segunda como `lbl`. Esta función
     # retorna el dataframe con las dos columnas.
     df = pd.read_csv(
-        '/tmp/amazon_cells_labelled.tsv',
+        'amazon_cells_labelled.tsv',
         sep='\t',
         header=0,
         names=['msg','lb1'],
@@ -49,18 +49,18 @@ def pregunta_02():
     """
 
     # Importe train_test_split
-    from ____ import ____
+    from sklern.model_selection import train_test_split
 
     # Cargue los datos generados en la pregunta 01.
-    x_tagged, y_tagged, _, _ = pregunta_01()
+    x_tagged, y_tagged, x_untagged, y_untagged = pregunta_01()
 
     # Divida los datos de entrenamiento y prueba. La semilla del generador de números
     # aleatorios es 12345. Use el 10% de patrones para la muestra de prueba.
     x_train, x_test, y_train, y_test = train_test_split(
-        ____,
-        ____,
-        test_size=____,
-        random_state=____,
+        x_tagged,
+        y_taggged,
+        test_size=0.1,
+        random_state=12345,
     )
 
     # Retorne `X_train`, `X_test`, `y_train` y `y_test`
