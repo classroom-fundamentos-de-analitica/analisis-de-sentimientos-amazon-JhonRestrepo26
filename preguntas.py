@@ -49,7 +49,7 @@ def pregunta_02():
     """
 
     # Importe train_test_split
-    from sklern.model_selection import train_test_split
+    from sklearn.model_selection import train_test_split
 
     # Cargue los datos generados en la pregunta 01.
     x_tagged, y_tagged, x_untagged, y_untagged = pregunta_01()
@@ -117,7 +117,7 @@ def pregunta_04():
         analyzer=analyzer,
         lowercase=True,
         stop_words='english',
-        token_pattern="\b\w\w+\b",
+        token_pattern=r"\b\w\w+\b",
         binary=True,
         max_df=1.0,
         min_df=5,
@@ -146,7 +146,7 @@ def pregunta_04():
         cv=5,
         scoring='accuracy',
         refit=True,
-        return_train_score=False,
+        return_train_score=True,
     )
 
     # Búsque la mejor combinación de regresores
@@ -163,7 +163,7 @@ def pregunta_05():
     """
 
     # Importe confusion_matrix
-    from ____ import ____
+    from sklearn.metrics import confusion_matrix
 
     # Obtenga el pipeline de la pregunta 3.
     gridSearchCV = pregunta_04()
@@ -172,14 +172,14 @@ def pregunta_05():
     X_train, X_test, y_train, y_test = pregunta_02()
 
     # Evalúe el pipeline con los datos de entrenamiento usando la matriz de confusion.
-    cfm_train = ____(
-        y_true=____,
-        y_pred=____.____(____),
+    cfm_train = confusion_matrix(
+        y_true=y_train,
+        y_pred=gridSearchCV.predict(x_train),
     )
 
-    cfm_test = ____(
-        y_true=____,
-        y_pred=____.____(____),
+    cfm_test = confusion_matrix(
+        y_true=y_test,
+        y_pred=gridSearchCV.predict(x_test),
     )
 
     # Retorne la matriz de confusion de entrenamiento y prueba
